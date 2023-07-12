@@ -1,6 +1,7 @@
 import strawberry
-from typing import List, Optional
+from typing import List, Optional, Tuple
 import uuid
+
 
 @strawberry.type
 class Parc:
@@ -13,6 +14,9 @@ class Parc:
     creation: Optional[int]
     quartier: Optional[List[str]]
     img: Optional[List[str]]
+    position: Optional[Tuple[float, float]]
+    user_position: Optional[Tuple[float, float]]
+
 
 @strawberry.type
 class Query:
@@ -29,10 +33,12 @@ class Query:
                 creation=1886,
                 quartier=["Hauts-Pavés", "Saint Félix", "Dervallières", "Zola"],
                 img=[
-                    "https://lh3.googleusercontent.com/p/AF1QipPYV41D4CfG3cgK-_1sFoxJmQ3WvO5Rf6FizhEX=s680-w680-h510",
-                    "https://lh3.googleusercontent.com/p/AF1QipN3bNYzSqSc5su51GroorKORDD5kVclLudsZDH-=s680-w680-h510",
-                    "https://lh3.googleusercontent.com/p/AF1QipPZoenWE7u-50FK06ULnQn1FIkl7so3rZqceK3c=s680-w680-h510",
+                    "https://www.jardinspaysdelaloire.fr/media/4417/big/20.04.11-proce-%2852%29.jpg",
+                    "https://www.jardinspaysdelaloire.fr/media/4709/big/quartier04-proc-%C2%AE.jpg",
+                    "https://api-infonantes.nantesmetropole.fr/banque/public/images/lieux/w/e1019-3-web-nm093419.jpg",
                 ],
+                position=(47.223889, -1.582222),
+                user_position=None,
             ),
             Parc(
                 id=uuid.uuid4(),
@@ -44,10 +50,12 @@ class Query:
                 creation=1800,
                 quartier=["Breil", "Barberie"],
                 img=[
-                    "https://lh3.googleusercontent.com/p/AF1QipO1N3TY73p5bjAU7lKSSUQVfwzjgI9u95axwwgH=s680-w680-h510",
-                    "https://lh3.googleusercontent.com/p/AF1QipObS66q-TqttQkIyjxfhj4uJlOhDFmS3dvnJu8B=s680-w680-h510",
-                    "https://lh3.googleusercontent.com/p/AF1QipNO4KSgZW3r692OnV88d1hmjZ7x1KalRTsaewKE=s680-w680-h510",
+                    "https://www.jardinspaysdelaloire.fr/media/4459/big/19.04.11-la-gaudini-%C2%BFre-%287%29.jpg",
+                    "https://www.jardinspaysdelaloire.fr/media/4706/big/quartier07-gaudini-%C2%BFre.jpg",
+                    "https://upload.wikimedia.org/wikipedia/commons/7/77/Nantes_-_Ch%C3%A2teau_de_la_Gaudini%C3%A8re_-02.jpg",
                 ],
+                position=(47.244167, -1.577778),
+                user_position=None,
             ),
             Parc(
                 id=uuid.uuid4(),
@@ -59,10 +67,12 @@ class Query:
                 creation=None,
                 quartier=None,
                 img=[
-                    "https://lh3.googleusercontent.com/p/AF1QipPWI1PR2tiLQB2emVQPwGp9QOYZHHNoMd2rovmp=s680-w680-h510",
-                    "https://lh3.googleusercontent.com/p/AF1QipMETUzbxp6UDjuvKXnsawEWjayxW-FfHIqskWwh=s680-w680-h510",
-                    "https://lh3.googleusercontent.com/p/AF1QipMGDOMT1jWG0YKsHHXK8pEHGMCTh3MY6gcmqRpi=s680-w680-h510",
+                    "https://jardins.nantes.fr/N/Jardin/Parcs-Jardins/Plus/1937/Oblates/Photo/1.jpg",
+                    "https://jardins.nantes.fr/N/Jardin/Parcs-Jardins/Plus/1937/Oblates/Photo/6.jpg",
+                    "https://jardins.nantes.fr/N/Jardin/Parcs-Jardins/Plus/1937/Oblates/Photo/9.jpg",
                 ],
+                position=(47.199722, -1.585),
+                user_position=None,
             ),
             Parc(
                 id=uuid.uuid4(),
@@ -73,7 +83,13 @@ class Query:
                 hectares=19,
                 creation=None,
                 quartier=["Doulon", "Bottière"],
-                img=["", "", ""],
+                img=[
+                    "https://www.jardinspaysdelaloire.fr/media/4407/big/44-grandbloterreau_depliant2011_%C2%A9com-externe-ville-de-nantes.jpg",
+                    "https://www.jardinspaysdelaloire.fr/media/4705/big/parc-du-grand-blottereau.jpg",
+                    "https://jardins.nantes.fr/N/Jardin/Parcs-Jardins/Plus/170/Grand-Blottereau/Photo/Diaporama/7.jpg",
+                ],
+                position=(47.228056, -1.508611),
+                user_position=None,
             ),
             Parc(
                 id=uuid.uuid4(),
@@ -84,7 +100,13 @@ class Query:
                 hectares=7.328,
                 creation=1800,
                 quartier=None,
-                img=["", "", ""],
+                img=[
+                    "https://www.jardinspaysdelaloire.fr/media/4702/big/vdn00107027.jpg",
+                    "https://www.jardinspaysdelaloire.fr/media/4402/big/_dsc5858-%C2%A9-j.r.-n-44-jard-des-plantes.jpg",
+                    "https://www.jardinspaysdelaloire.fr/media/4400/big/_dsc6895-%C2%A9-j.r.-n-44_jard-des-plantes.jpg",
+                ],
+                position=(47.219444, -1.542778),
+                user_position=None,
             ),
             Parc(
                 id=uuid.uuid4(),
@@ -95,7 +117,13 @@ class Query:
                 hectares=14,
                 creation=1971,
                 quartier=None,
-                img=["", "", ""],
+                img=[
+                    "https://www.jardinspaysdelaloire.fr/media/4711/big/quartier09-beaujoire.jpg",
+                    "https://www.jardinspaysdelaloire.fr/media/4099/big/560.jpg",
+                    "https://www.jardinspaysdelaloire.fr/media/4103/big/568.jpg",
+                ],
+                position=(47.261944, -1.534167),
+                user_position=None,
             ),
             Parc(
                 id=uuid.uuid4(),
@@ -106,18 +134,30 @@ class Query:
                 hectares=1.2,
                 creation=2019,
                 quartier=["Quartier Bellevue", "Chantenay", "ainte-Anne"],
-                img=["", "", ""],
+                img=[
+                    "https://www.jardinspaysdelaloire.fr/media/5268/big/44_jardin-extraordinaire.jpg",
+                    "https://mavieenloireatlantique.fr/wp-content/uploads/2020/05/Jardin-Extraordinaire-9180.jpg",
+                    "https://metropole.nantes.fr/files/images/actualites/nature-environnement/jardin%20extraordinaire/jardin-extraordinaire-800jpg.jpg",
+                ],
+                position=(47.200278, -1.580833),
+                user_position=None,
             ),
             Parc(
                 id=uuid.uuid4(),
-                nom="L'Île de Versailles",
+                nom="Île de Versailles",
                 adresse="Quai de Versailles",
                 ville="Nantes",
                 departement=44000,
                 hectares=1.7,
                 creation=1831,
                 quartier=["Hauts-Pavés", "Saint-Félix"],
-                img=["", "", ""],
+                img=[
+                    "https://www.jardinspaysdelaloire.fr/media/4708/medium/maison-de-l-erdre_ile-de-versailles.jpg",
+                    "https://www.jardinspaysdelaloire.fr/media/4411/big/01.06.11-i-de-versailles-%2816%29.jpg",
+                    "https://www.jardinspaysdelaloire.fr/media/4408/big/01.06.11-i-de-versailles-%286%29.jpg",
+                ],
+                position=(47.233333, -1.55),
+                user_position=None,
             ),
             Parc(
                 id=uuid.uuid4(),
@@ -128,7 +168,13 @@ class Query:
                 hectares=None,
                 creation=1971,
                 quartier=None,
-                img=["", "", ""],
+                img=[
+                    "https://www.sortir-en-ville.com/images/kcfinder/images/beaujoire-jdo-13-754-4.JPG",
+                    "https://nanteswithlove.fr/wp-content/uploads/2015/07/Parc-de-la-Roseraie-Nantes-61-1024x678.jpg",
+                    "https://nanteswithlove.fr/wp-content/uploads/2015/07/Parc-de-la-Roseraie-Nantes_Cover-832x554_c.jpg",
+                ],
+                position=(47.2626266, -1.5327121),
+                user_position=None,
             ),
             Parc(
                 id=uuid.uuid4(),
@@ -140,10 +186,12 @@ class Query:
                 creation=None,
                 quartier=None,
                 img=[
-                    "https://lh3.googleusercontent.com/p/AF1QipPnQh25MHY3yHz5Ru9-Kqc-tRCAyArfeP4st-bu=s680-w680-h510",
-                    "https://lh3.googleusercontent.com/p/AF1QipOnTz-wv8UqXD8QdcX3zXY7RckRDMyIt6_ga_GY=s680-w680-h510",
-                    "https://lh3.googleusercontent.com/p/AF1QipPYqPhKBAFwkB8BxwOyMl4ifjy2541HQ8P4il22=s680-w680-h510",
+                    "https://jardins.nantes.fr/N/Image/RSoc/Photo/parc-de-beaulieu-nantes.jpg",
+                    "https://jardins.nantes.fr/N/Jardin/Parcs-Jardins/Plus/211/Beaulieu/Photo//4.jpg",
+                    "https://jardins.nantes.fr/N/Jardin/Parcs-Jardins/Plus/211/Beaulieu/Photo//1.jpg",
                 ],
+                position=(47.2125, -1.519722),
+                user_position=None,
             ),
         ]
         return parcs_data

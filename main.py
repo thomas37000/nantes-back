@@ -1,18 +1,26 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import strawberry
 from strawberry.asgi import GraphQL
-from listParc import Query
-# from listSkateparks import Query as SkateparkQuery
+from listParc import Query as ParcQuery
+from listPiscines import Query as PiscinesQuery
 
-# @strawberry.type
-# class Query(ParcQuery, SkateparkQuery):
-#     pass
-
-# schema = strawberry.Schema(query=Query)
+@strawberry.type
+class Query(ParcQuery, PiscinesQuery):
+    pass
 
 schema = strawberry.Schema(query=Query)
+
+# schema = strawberry.Schema(query=Query)
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:4200"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def index():
